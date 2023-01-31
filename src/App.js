@@ -1,24 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import { React, useState } from 'react';
+import { ProgressBar, changeNumberOfQuestions, getRandomInt } from './compos';
 
 function App() {
+  const [questionCount, setQuestionCount] = useState(10);
+
+  console.log(questionCount);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {' '}
+      <div className="App">
+        <ProgressBar questionCount={questionCount} />
+      </div>
+      <br />
+      <button
+        onClick={() => {
+          changeNumberOfQuestions(
+            getRandomInt(6),
+            setQuestionCount,
+            questionCount
+          );
+        }}
+      >
+        Add some questions
+      </button>
+      <br />
+      <button
+        onClick={() => {
+          changeNumberOfQuestions(
+            -getRandomInt(6),
+            setQuestionCount,
+            questionCount
+          );
+        }}
+      >
+        Remove some questions
+      </button>
+      <br />
+      <button
+        onClick={() => {
+          changeNumberOfQuestions(1, setQuestionCount, questionCount);
+        }}
+      >
+        Add one question
+      </button>
+      <br />
+      <button
+        onClick={() => {
+          changeNumberOfQuestions(-1, setQuestionCount, questionCount);
+        }}
+      >
+        Remove one question
+      </button>
+    </>
   );
 }
 
