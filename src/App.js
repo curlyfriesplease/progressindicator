@@ -3,9 +3,8 @@ import { React, useState } from 'react';
 import { ProgressBar, changeNumberOfQuestions, getRandomInt } from './compos';
 
 function App() {
-  const [questionCount, setQuestionCount] = useState(10);
+  const [questionCount, setQuestionCount] = useState(15);
 
-  console.log(questionCount);
   return (
     <>
       {' '}
