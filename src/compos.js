@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { NodeGroup } from 'react-move'
+import { interpolate, interpolateTransformSvg } from 'd3-interpolate'
 
 export function getRandomInt(max) {
   const ranNum = Math.floor(Math.random() * max);
@@ -19,18 +20,47 @@ const ProgressQuestionUnit = ({ key, name }) => {
 };
 
 export const ProgressBar = ({ questionCount }) => {
-  const [parent, enableAnimations] = useAutoAnimate({ duration: 2000 });
   let questions = [];
   for (let i = 0; i < questionCount; i++) {
     questions.push(
       <ProgressQuestionUnit key={`questionId${i + 1}`} name={i + 1} />
     );
+    console.log(`questionId${i + 1}`);
   }
   console.log(questions);
 
   return (
-    <div id="progressBarDiv" className="progressBar" ref={parent}>
-      {questions}
+    <div id="progressBarDiv" className="progressBar">
+      <NodeGroup
+        data={questions}
+        keyAccessor={(d) => d.key}
+
+        start={(data, index) => ({
+          ...
+        })}
+
+        enter={(data, index) => ([ // An array
+          ...
+        ])}
+
+        update={(data) => ({
+          ...
+        })}
+
+        leave={() => ({
+          ...
+        })}
+
+        interpolation ={(begValue, endValue, attr) => { // pass as prop
+          if (attr === 'transform') {
+            return interpolateTransformSvg(begValue, endValue)
+          }
+
+          return interpolate(begValue, endValue)
+        }}
+      >
+  ...children
+    </NodeGroup>
     </div>
   );
 };
