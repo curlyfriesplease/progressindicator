@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
+import './compos.css';
 
 export function getRandomInt(max) {
   const ranNum = Math.floor(Math.random() * max);
@@ -15,11 +15,10 @@ export function changeNumberOfQuestions(num, setQuestionCount, questionCount) {
 }
 
 const ProgressQuestionUnit = ({ key, name }) => {
-  return <div key={key} className="progessQuestionUnit"></div>;
+  return <div key={key} className="progessQuestionUnit" />;
 };
 
 export const ProgressBar = ({ questionCount }) => {
-  const [parent, enableAnimations] = useAutoAnimate({ duration: 2000 });
   let questions = [];
   for (let i = 0; i < questionCount; i++) {
     questions.push(
@@ -29,7 +28,7 @@ export const ProgressBar = ({ questionCount }) => {
   console.log(questions);
 
   return (
-    <div id="progressBarDiv" className="progressBar" ref={parent}>
+    <div id="progressBarDiv" className="progressBar">
       {questions}
     </div>
   );

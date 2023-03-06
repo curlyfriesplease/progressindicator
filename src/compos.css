@@ -1,0 +1,31 @@
+.progressBar {
+  background: rgb(255, 219, 219);
+  height: 25px;
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 8px 8px 0;
+  border-radius: 10px;
+  margin: 50px 30px 50px 30px;
+}
+
+.progessQuestionUnit {
+  display: flex;
+  background: rgb(165, 165, 253);
+  /* flex-grow: 1; */
+  flex: 1 1 auto;
+  margin-left: 3px;
+  border-radius: 5px;
+  width: auto;
+  /* transition: width 1s ease-in-out; */
+  transition: flex-basis 500ms ease-in-out;
+}
+
+.progessQuestionUnit:first-of-type {
+  border-radius: 20px 8px 8px 20px;
+}
+
+.progessQuestionUnit:last-of-type {
+  border-radius: 8px 20px 20px 8px;
+}
